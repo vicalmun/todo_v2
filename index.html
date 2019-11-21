@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+<html manifest="cache.manifest">
+<!-- AddType text/cache-manifest .appcache >>>> en el archivo de configuracion del servidor ¿donde está eso?-->
 
 <head>
     <meta charset="UTF-8">
@@ -12,9 +14,11 @@
         }
     </style>
 
-    <!-- BOOTSTRAP-->
+    <!-- BOOTSTRAP
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    -->
+    <link rel="stylesheet" href="bootstrap.min.css">
 </head>
 
 <body>
@@ -28,7 +32,7 @@
 
         <div class="mt-3" v-for="(item, index) of tareas">
 
-            <div role="alert" :class="['alert','alert-dark']">
+            <div role="alert" :class="['alert','alert-success']">
                 <div class="d-flex justify-content-between aling-items-center">
                     <div>
                         {{item.nombre}}
@@ -45,13 +49,14 @@
         <p>Tareas completadas</p>
         <div class="mt-3" v-for="(item, index) of tareasCompletadas">
 
-            <div role="alert" :class="['alert', 'alert-success', 'transparente']">
+            <div role="alert" :class="['alert', 'alert-dark', 'transparente']">
                 <div class="d-flex justify-content-between aling-items-center">
                     <div>
                         <del>{{item.nombre}}</del>
                     </div>
                     <div>
 
+                        <button class="btn btn-dark btn-sm" @click="deshacerTarea(index)">UP</button>
                         <button class="btn btn-danger btn-sm" @click="eliminarCompleta(index)">X</button>
                     </div>
                 </div>
@@ -62,7 +67,7 @@
 
 
 
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="vue.js"></script>
     <script src="todo.js"></script>
 </body>
 

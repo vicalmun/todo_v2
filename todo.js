@@ -1,6 +1,6 @@
 const app = new Vue({
     el: '#app',
-    data : {
+    data: {
         titulo: 'TODO-TODAY',
         tareas: [],
         nuevaTarea: '',
@@ -8,8 +8,8 @@ const app = new Vue({
         tareasCompletadas: [],
         tareaCompleta: '',
     },
-    methods:{
-        agregarTarea: function(){
+    methods: {
+        agregarTarea: function () {
             this.tareas.push({
                 nombre: this.nuevaTarea,
                 estado: false,
@@ -20,20 +20,20 @@ const app = new Vue({
 
         },
         //Este va a ser el nuevo completar, cuando lo sepa hacer
-        editarTarea: function(index){
+        editarTarea: function (index) {
             this.tareas[index].estado = true;
             localStorage.setItem('lista_tareas', JSON.stringify(this.tareas));
             localStorage.setItem('lista_tareas_completa', JSON.stringify(this.tareasCompletadas));
 
         },
-        eliminar: function(index){
+        eliminar: function (index) {
             this.tareas.splice(index, 1);
             localStorage.setItem('lista_tareas', JSON.stringify(this.tareas));
             localStorage.setItem('lista_tareas_completa', JSON.stringify(this.tareasCompletadas));
 
         },
 
-        completarTarea: function(index){
+        completarTarea: function (index) {
             //Elimino la tarea de las tareas, y la creo en tareas completadas
             nombre_temp = this.tareas[index].nombre;
             this.tareas.splice(index, 1);
@@ -43,32 +43,42 @@ const app = new Vue({
             });
             localStorage.setItem('lista_tareas', JSON.stringify(this.tareas));
             localStorage.setItem('lista_tareas_completa', JSON.stringify(this.tareasCompletadas));
-
         },
-        eliminarCompleta: function(index){
+
+        deshacerTarea: function (index) {
+            nombre_temp = this.tareasCompletadas[index].nombre;
+            this.tareasCompletadas.splice(index, 1);
+            this.tareas.push({
+                nombre: nombre_temp,
+                estado: true,
+            });
+            localStorage.setItem('lista_tareas', JSON.stringify(this.tareas));
+            localStorage.setItem('lista_tareas_completa', JSON.stringify(this.tareasCompletadas));
+        },
+        eliminarCompleta: function (index) {
             this.tareasCompletadas.splice(index, 1);
             localStorage.setItem('lista_tareas', JSON.stringify(this.tareas));
             localStorage.setItem('lista_tareas_completa', JSON.stringify(this.tareasCompletadas));
 
         }
     },
-    created: function(){
+    created: function () {
         let datos_tareas = JSON.parse(localStorage.getItem('lista_tareas'))
-        if (datos_tareas === null){
+        if (datos_tareas === null) {
             this.tareas = [];
         }
-        else{
+        else {
             this.tareas = datos_tareas;
         }
 
         let datos_tareas_complet = JSON.parse(localStorage.getItem('lista_tareas_completa'))
-        if (datos_tareas_complet === null){
+        if (datos_tareas_complet === null) {
             this.tareasCompletadas = [];
         }
-        else{
+        else {
             this.tareasCompletadas = datos_tareas_complet;
         }
     }
-    
+
 
 });

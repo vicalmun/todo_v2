@@ -1,0 +1,23 @@
+CACHE MANIFEST
+
+# v1 - 21/11/2019
+
+# Entradas específicas en cache
+CACHE:
+vue.js
+index.html
+todo.js
+bootstrap.min.css   
+
+# All other resources (e.g. sites) require the user to be online. 
+NETWORK:
+https://cdn.jsdelivr.net/npm/vue/dist/vue.js
+# Usar desde la red si esta disponible
+
+
+# offline.html will be displayed if the user is offline
+FALLBACK:
+/ /offline.html
+https://cdn.jsdelivr.net/npm/vue/dist/vue.js
+
+# Additional resources to cache
