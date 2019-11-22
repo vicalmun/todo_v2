@@ -8,4 +8,9 @@ vue.js
 # index.html
 https://github.com/vicalmun/todo_v2
 todo.js
-bootstrap.min.css   
+bootstrap.min.css
+
+#images
+marca-de-verificacion.svg
+flecha_arriba.svg
+basura.svg

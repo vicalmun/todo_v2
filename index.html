@@ -14,10 +14,10 @@
         }
     </style>
 
-    <!-- BOOTSTRAP
+    <!-- BOOTSTRAP -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
         integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    -->
+
     <link rel="stylesheet" href="bootstrap.min.css">
 </head>
 
@@ -38,8 +38,9 @@
                         {{item.nombre}}
                     </div>
                     <div>
-                        <button class="btn btn-success btn-sm" @click="completarTarea(index)">OK</button>
-                        <button class="btn btn-danger btn-sm" @click="eliminar(index)">X</button>
+                        <button class="btn btn-success btn-sm" @click="completarTarea(index)"><img style="width: 1em;" src="marca-de-verificacion.svg" alt="OK"></button>
+                    <!--    <button class="btn btn-danger btn-sm" @click="eliminar(index)">X</button> 
+                            Esta mierda es peligrosa, ya que se puede escapar el dedo, así que la quito -->
                     </div>
                 </div>
             </div>
@@ -56,8 +57,8 @@
                     </div>
                     <div>
 
-                        <button class="btn btn-dark btn-sm" @click="deshacerTarea(index)">UP</button>
-                        <button class="btn btn-danger btn-sm" @click="eliminarCompleta(index)">X</button>
+                        <button class="btn btn-dark btn-sm" @click="deshacerTarea(index)"><img style="width: 1em;" src="flecha_arriba.svg" alt="UP"></button>
+                        <button class="btn btn-danger btn-sm" @click="eliminarCompleta(index)"><img style="width: 1em;" src="basura.svg" alt="X"></button>
                     </div>
                 </div>
             </div>
